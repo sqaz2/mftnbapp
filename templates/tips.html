@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Packing & Moving Tips · MFTNB Moving App{% endblock %}
+
+{% block content %}
+<h2>Packing &amp; Moving Tips</h2>
+
+<p>Proper preparation makes all the difference when you’re moving.  Below are
+expert‑approved tips gathered from reputable moving guides and industry
+professionals.  Following these recommendations will help keep your
+belongings safe and your move running smoothly.</p>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for tip in tips %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ tip.title }}</h5>
+          <p class="card-text">{{ tip.body }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<p class="mt-4 small text-muted">Sources for these tips include professional
+moving guides and packing experts【742590010300492†L119-L165】, as well as
+first‑hand advice from seasoned movers【964863029312229†L119-L146】.  Always
+adapt guidelines to your specific situation.</p>
+
+{% endblock %}

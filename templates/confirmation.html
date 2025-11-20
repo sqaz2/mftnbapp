@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}Confirmation · MFTNB Moving App{% endblock %}
+
+{% block content %}
+<h2>Booking Confirmation &amp; Estimate</h2>
+
+<p>Thank you, {{ booking.name or 'Friend' }}, for requesting a move with Moving Forward to New Beginnings!</p>
+
+<div class="mb-4">
+  <h5>Your Details</h5>
+  <ul class="list-unstyled">
+    <li><strong>Name:</strong> {{ booking.name }}</li>
+    <li><strong>Email:</strong> {{ booking.email }}</li>
+    <li><strong>Phone:</strong> {{ booking.phone }}</li>
+    <li><strong>Move Date:</strong> {{ booking.move_date }}</li>
+    <li><strong>Origin:</strong> {{ booking.origin }}</li>
+    <li><strong>Destination:</strong> {{ booking.destination }}</li>
+    {% if booking.notes %}<li><strong>Notes:</strong> {{ booking.notes }}</li>{% endif %}
+  </ul>
+</div>
+
+{% if estimate %}
+  <div class="mb-4">
+    <h5>Estimated Move Requirements</h5>
+    <p>Based on the information you provided, we recommend the following:</p>
+    <ul class="list-unstyled">
+      <li><strong>Recommended Crew Size:</strong> {{ estimate.movers }} movers</li>
+      <li><strong>Estimated Hours:</strong> {{ estimate.hours }} hours</li>
+      <li><strong>Estimated Cost:</strong> ${{ estimate.cost }}</li>
+      <li><strong>Home Size:</strong> {{ estimate.bedrooms }} bedroom(s)</li>
+      <li><strong>Stairs:</strong> {{ estimate.stairs_origin }} at origin, {{ estimate.stairs_destination }} at destination</li>
+      <li><strong>Special Heavy Items:</strong> {{ estimate.heavy_items }}</li>
+      <li><strong>Travel Distance:</strong> {{ estimate.distance_km }} km round‑trip</li>
+      <li><strong>Peak Season:</strong> {{ 'Yes' if estimate.peak_season else 'No' }}</li>
+    </ul>
+    <p class="small text-muted">This estimate is based on industry data for moving
+    costs in Alberta【815592489539990†L185-L187】【969930966203392†L120-L144】, typical crew size
+    recommendations【159051122869171†L167-L173】【159051122869171†L291-L301】 and average loading &amp; unloading times【940396082598849†L210-L222】【426727494212747†L119-L163】.  Actual
+    charges may vary depending on factors such as specific inventory,
+    access constraints and final travel routes.</p>
+  </div>
+{% endif %}
+
+{% if inventory_data %}
+  <div class="mb-4">
+    <h5>Your Inventory</h5>
+    <p>Here’s a summary of the items you told us you plan to move.  This
+    information helps us ensure we bring the right equipment on moving day.</p>
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered align-middle">
+        <thead class="table-light">
+        <tr>
+          <th scope="col">Room</th>
+          <th scope="col">Item</th>
+          <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in inventory_data %}
+          <tr>
+            <td>{{ item.room }}</td>
+            <td>{{ item.item }}</td>
+            <td>{{ item.quantity }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% else %}
+  <p>No inventory data provided.</p>
+{% endif %}
+
+<p>We’ll review your request and reach out soon to finalise details.  In the
+meantime, feel free to explore our <a href="{{ url_for('tips') }}">packing tips</a> or edit your
+<a href="{{ url_for('inventory') }}">inventory</a> if anything changes.</p>
+
+{% endblock %}

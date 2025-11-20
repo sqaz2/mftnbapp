@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome · MFTNB Moving App{% endblock %}
+
+{% block content %}
+<div class="text-center">
+  <h1 class="display-4">Welcome to Moving Forward to New Beginnings</h1>
+  <p class="lead">Moves powered by compassion, safety and experience.</p>
+  <p>
+    We guide you through every step—whether you’re downsizing, moving across town
+    or rebuilding after a difficult season. Our friendly crews handle the heavy
+    lifting while you focus on your new beginning. Serving Red Deer &amp; Central
+    Alberta, we strive to make your move as stress‑free as possible.
+  </p>
+  <p>
+    Use this tool to build a detailed inventory of what you’re moving, discover
+    expert packing tips and request a booking with our team. Your information
+    stays on this device until you choose to send it to us.
+  </p>
+  <div class="d-grid gap-2 d-md-block">
+    <a href="{{ url_for('inventory') }}" class="btn btn-lg btn-primary me-md-2">Start Inventory</a>
+    <a href="{{ url_for('tips') }}" class="btn btn-lg btn-outline-primary me-md-2">See Packing Tips</a>
+    <a href="{{ url_for('booking') }}" class="btn btn-lg btn-success">Book a Move</a>
+  </div>
+</div>
+{% endblock %}

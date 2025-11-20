@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}MFTNB Moving App{% endblock %}</title>
+  <!-- Bootstrap CSS from CDN for quick styling -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-HEiA9xXN9BOePfFCrih8CXNN3Ck4DUg6Aa5aZ0L9DvvklQTaBE6rcCeYnI9xHYcQ" crossorigin="anonymous">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('index') }}">MFTNB Moves</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('inventory') }}">Inventory</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('tips') }}">Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('booking') }}">Book</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- Bootstrap JS bundle from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Do3DmMqE9cSWu8xpg3Ujc21O/Xc9YL7Zz+9F0Wy6vVZM9U81il1L0DqKGNtgk4Za"
+        crossorigin="anonymous"></script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>
